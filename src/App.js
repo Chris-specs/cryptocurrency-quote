@@ -8,7 +8,7 @@ import Spinner from './components/Spinner';
 
 const Contenedor = styled.div`
   flex: 1 0 auto;
-  max-width: 900px;
+  max-width: 900px; 
   margin: 0 auto;
   @media (min-width:992px) {
     display: grid;
