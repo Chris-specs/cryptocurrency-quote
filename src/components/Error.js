@@ -2,14 +2,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 const MensajeError = styled.p`
-    background-color: #B7322C;
+    background-color: #ff4a4a;
     padding: 1rem;
     color: #FFF;
-    font-size: 30px;
+    font-size: 25px;
     text-transform: uppercase;
     font-weight: bold;
-    text-align: center;
-    font-family: 'Bebas Neue', cursive;
+    text-align: center;  font-family: 'Montserrat';
+    border-radius: 15px;
 `;
 
 const Error = ({mensaje}) => {

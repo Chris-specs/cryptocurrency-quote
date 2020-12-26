@@ -6,11 +6,12 @@ import useCriptomoneda from '../hooks/useCriptomoneda';
 import axios from 'axios';
 
 const Boton = styled.input`
+    font-family: 'Montserrat';
     margin-top: 20px;
     font-weight: bold;
     font-size: 20px;
     padding: 10px;
-    background-color: #66A2FE;
+    background-color: #8c4aff;
     border: none;
     width: 100%;
     border-radius: 10px;
@@ -18,7 +19,7 @@ const Boton = styled.input`
     transition: background-color .3s ease;
 
     &:hover {
-        background-color: #326AC0;
+        background-color: #733ece;
         cursor:pointer;
     }
 `
@@ -30,17 +31,17 @@ const Formulario = ({guardarMoneda, guardarCriptomoneda}) => {
     const [ error, guardarError ] = useState(false);
 
     const MONEDAS = [
-        { codigo: 'USD', nombre: 'Dolar de Estados Unidos' },
-        { codigo: 'MXN', nombre: 'Peso Mexicano' },
+        { codigo: 'USD', nombre: 'US Dollar' },
+        { codigo: 'MXN', nombre: 'Mexican Peso' },
         { codigo: 'EUR', nombre: 'Euro' },
-        { codigo: 'GBP', nombre: 'Libra Esterlina' }
+        { codigo: 'GBP', nombre: 'Pound Sterling' }
     ]
 
     //Utilizar useMoneda
-    const [ moneda, SelectMonedas, actualizarState ] = useMoneda('Elige tu Moneda', '', MONEDAS);
+    const [ moneda, SelectMonedas, actualizarState ] = useMoneda('Choose your currency', '', MONEDAS);
 
     //Utilizar useCriptomoneda
-    const [ criptomoneda, SelectCripto ] = useCriptomoneda('Elige tu Criptomoneda', '', listacripto);
+    const [ criptomoneda, SelectCripto ] = useCriptomoneda('Choose your cryptocurrency', '', listacripto);
 
     //Ejecutar llamado a la API
     useEffect(() => {
@@ -76,7 +77,7 @@ const Formulario = ({guardarMoneda, guardarCriptomoneda}) => {
         <form
             onSubmit={cotizarMoneda}
         >
-            {error ? <Error mensaje="Todos los campos son obligatorios" />: null}
+            {error ? <Error mensaje="All fields are required" />: null}
 
             <SelectMonedas/>
 
@@ -84,7 +85,7 @@ const Formulario = ({guardarMoneda, guardarCriptomoneda}) => {
 
             <Boton
                 type="submit"
-                value="Calcular"
+                value="Calculate"
             />
         </form>
      );

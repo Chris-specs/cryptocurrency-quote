@@ -1,18 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import styled from '@emotion/styled';
 import axios from 'axios';
-import imagen from './cryptomonedas.png';
+import imagen from './Cryptocurrency_PNG.png';
 import Formulario from './components/Formulario';
 import Cotizacion from './components/Cotizacion';
 import Spinner from './components/Spinner';
 
 const Contenedor = styled.div`
+  flex: 1 0 auto;
   max-width: 900px;
   margin: 0 auto;
   @media (min-width:992px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap:2rem;
+  }
+  @media (max-width:992px) {
+    padding-left: 4%;
+    padding-right: 4%;
   }
 `;
 
@@ -22,7 +27,7 @@ const Imagen = styled.img`
 `;
 
 const Heading = styled.h1`
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Montserrat';
   color: #FFF;
   text-align:left;
   font-weight: 700;
@@ -34,9 +39,23 @@ const Heading = styled.h1`
     content: '';
     width: 100px;
     height: 6px;
-    background-color: #66A2FE;
+    background-color: #8c4aff;
     display:block;
   }
+`;
+
+const Footer = styled.footer`
+  font-family: 'Montserrat';
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  flex-shrink: 0;
+`;
+
+const Link = styled.a`
+  color: #8c4aff;
+  text-decoration: none;
 `;
 
 function App() {
@@ -79,25 +98,28 @@ function App() {
   const componente = (cargando) ? <Spinner /> : <Cotizacion resultado={resultado}/>
 
   return (
-    <Contenedor>
-      <div>
-        <Imagen
-          src={imagen}
-          alt="imagen cripto"
-        />
-      </div>
-      <div>
-        <Heading>Cotiza Criptomonedas al Instante</Heading>
+    <Fragment>
+      <Contenedor>
+        <div>
+          <Imagen src={imagen} alt="imagen cripto" />
+        </div>
+        <div>
+          <Heading>Quote Cryptocurrencies Instantly</Heading>
 
-        <Formulario
-          guardarMoneda={guardarMoneda}
-          guardarCriptomoneda={guardarCriptomoneda}
-        />
+          <Formulario
+            guardarMoneda={guardarMoneda}
+            guardarCriptomoneda={guardarCriptomoneda}
+          />
 
-        {componente}
-
-      </div>
-    </Contenedor>
+          {componente}
+        </div>
+      </Contenedor>
+      <Footer>
+        <span>
+          Find the code in <Link href="https://github.com/Chris-specs/cryptocurrency-quote">GitHub</Link>
+        </span>
+      </Footer>
+    </Fragment>
   );
 }
 
